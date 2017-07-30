@@ -26,8 +26,7 @@ expected worst-case space complexity is O(1).
 
 function solution(N) {
     const arr = Math.abs(N).toString(2).split('');
-    let maxGap = 0;
-    let currentGap = 0;
+    let maxGap = currentGap = 0;
     arr.forEach(char => {
         if (char == 0) {
             currentGap++;
