@@ -27,3 +27,27 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
 Elements of input arrays can be modified.
 */
+
+// method 1 - using the sum formula
+function solution1(A) {
+  const total = (A.length + 1) * (A.length + 2) / 2;
+  return A.reduce((acc, num) => acc - num, total);
+}
+
+// method 2 - using XOR
+function solution2(A) {
+  let x1 = A[0]; // xor all elements in array
+  let x2 = 1; // xor all elements from 1 to n+1 (n+1 since 1 number is missing)
+  for (let i = 1; i < A.length; i++) {
+    x1 ^= A[i];
+  }
+  for (let i = 2; i <= A.length + 1; i++) {
+    x2 ^= i;
+  }
+
+  return x2 ^ x1;
+}
+
+var a = [2,4,1,5,6,3,8];
+console.log(solution1(a));
+console.log(solution2(a));
